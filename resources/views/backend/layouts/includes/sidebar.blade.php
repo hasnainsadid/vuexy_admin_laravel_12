@@ -36,17 +36,10 @@
     <ul class="menu-inner py-1 ps ps--active-y">
         <!-- Dashboards -->
         <li class="menu-item active open">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                {{-- <i class="menu-icon icon-base ti tabler-smart-home"></i> --}}
+            <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-smart-home"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item active">
-                    <a href="{{ route('dashboard') }}" class="menu-link">
-                        <div data-i18n="Analytics">Analytics</div>
-                    </a>
-                </li>
-            </ul>
         </li>
 
         <!-- Forms & Tables -->
@@ -54,7 +47,7 @@
             <span class="menu-header-text" data-i18n="Forms &amp; Tables">Forms &amp; Tables</span>
         </li>
         <!-- Forms -->
-        <li class="menu-item">
+        {{-- <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon icon-base ti tabler-toggle-left"></i>
                 <div data-i18n="Form Elements">Form Elements</div>
@@ -158,13 +151,13 @@
                 <i class="menu-icon icon-base ti tabler-checkbox"></i>
                 <div data-i18n="Form Validation">Form Validation</div>
             </a>
-        </li>
+        </li> --}}
         <!-- Tables -->
-        <li class="menu-item">
+        {{-- <li class="menu-item">
             <a href="tables-basic.html" class="menu-link">
                 <i class="menu-icon icon-base ti tabler-table"></i>
                 <div data-i18n="Tables">Tables</div>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </aside>
