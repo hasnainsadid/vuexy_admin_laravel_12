@@ -12,6 +12,8 @@
 
 <!-- Vendors JS -->
 <script src="{{ asset('backend') }}/vendor/libs/swiper/swiper.js"></script>
+<script src="{{ asset('backend') }}/vendor/libs/tagify/tagify.js"></script>
+<script src="{{ asset('backend') }}/js/forms-tagify.js"></script>
 <script src="{{ asset('backend') }}/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
 
 <!-- Main JS -->
@@ -28,3 +30,9 @@
 
 {{-- sweet alert --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{{-- select2 --}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+{{-- tagsinput --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.6.0/bootstrap-tagsinput.min.js"></script>
