@@ -19,3 +19,12 @@
 
 <!-- Page JS -->
 <script src="{{ asset('backend') }}/js/dashboards-analytics.js"></script>
+
+{{-- izitoast --}}
+<script src="{{ asset('js/iziToast.js') }}"></script>
+@include('vendor.lara-izitoast.toast')
+{{-- custom css --}}
+<script src="{{ asset('backend') }}/js/custom.js"></script>
+
+{{-- sweet alert --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

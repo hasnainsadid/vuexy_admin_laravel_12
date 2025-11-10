@@ -29,6 +29,9 @@
 <!-- Page CSS -->
 <link rel="stylesheet" href="{{ asset('backend') }}/vendor/css/pages/cards-advance.css">
 
+{{-- izitoast --}}
+<link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
+
 <!-- Helpers -->
 <script src="{{ asset('backend') }}/vendor/js/helpers.js"></script>
 <style type="text/css">
