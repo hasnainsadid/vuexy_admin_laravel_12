@@ -8,7 +8,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        notify()->success('welcome to admin dashboard');
         return view('backend.pages.dashboard.index');
+        // return view('dashboard');
     })->name('dashboard');
 });

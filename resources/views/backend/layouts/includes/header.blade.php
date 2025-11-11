@@ -91,7 +91,7 @@
                         <div class="dropdown-divider my-1 mx-n2"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item waves-effect" href="pages-profile-user.html"> <i
+                        <a class="dropdown-item waves-effect" href="{{ route('profile.show') }}"> <i
                                 class="icon-base ti tabler-user me-3 icon-md"></i><span class="align-middle">My
                                 Profile</span> </a>
                     </li>
@@ -102,11 +102,16 @@
                     </li>
                     <li>
                         <div class="d-grid px-2 pt-2 pb-1">
-                            <a class="btn btn-sm btn-danger d-flex waves-effect waves-light"
-                                href="auth-login-cover.html" target="_blank">
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit"
+                            {{-- class="dropdown-item d-flex align-items-center" --}}
+                            class="btn btn-sm btn-danger d-flex waves-effect waves-light">
+                                <i class="bx bx-log-out-circle"></i>
                                 <small class="align-middle">Logout</small>
                                 <i class="icon-base ti tabler-logout ms-2 icon-14px"></i>
-                            </a>
+                            </button>
+                        </form>
                         </div>
                     </li>
                 </ul>
