@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OthersController;
+use App\Http\Controllers\Frontend\ContactController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::post('/contact-us', ContactController::class)->name('contact.us');
 
 require __DIR__ . '/admin.php';
 

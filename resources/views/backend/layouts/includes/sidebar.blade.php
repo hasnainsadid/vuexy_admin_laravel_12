@@ -38,127 +38,39 @@
         <li class="menu-item active open">
             <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon icon-base ti tabler-smart-home"></i>
-                <div data-i18n="Dashboards">Dashboards</div>
+                <div>Dashboards</div>
             </a>
         </li>
 
-        <!-- Forms & Tables -->
+        <!-- pages -->
         <li class="menu-header small">
-            <span class="menu-header-text" data-i18n="Forms &amp; Tables">Forms &amp; Tables</span>
+            <span class="menu-header-text">Main pages</span>
         </li>
         <!-- Forms -->
-        {{-- <li class="menu-item">
+         <li class="menu-item">
+            <a href="{{ route('contacts.index') }}" class="menu-link">
+                {{-- <i class="menu-icon icon-base ti tabler-toggle-left"></i> --}}
+                <div>Contact Us</div>
+            </a>
+        </li>
+        <!-- pages -->
+        <li class="menu-header small">
+            <span class="menu-header-text">Recycle Bin</span>
+        </li>
+        <!-- Forms -->
+         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon icon-base ti tabler-toggle-left"></i>
-                <div data-i18n="Form Elements">Form Elements</div>
+                <i class="menu-icon icon-base ti tabler-recycle"></i>
+                <div>Recycle Bin</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="forms-basic-inputs.html" class="menu-link">
-                        <div data-i18n="Basic Inputs">Basic Inputs</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="forms-input-groups.html" class="menu-link">
-                        <div data-i18n="Input groups">Input groups</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="forms-custom-options.html" class="menu-link">
-                        <div data-i18n="Custom Options">Custom Options</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="forms-editors.html" class="menu-link">
-                        <div data-i18n="Editors">Editors</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="forms-file-upload.html" class="menu-link">
-                        <div data-i18n="File Upload">File Upload</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="forms-pickers.html" class="menu-link">
-                        <div data-i18n="Pickers">Pickers</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="forms-selects.html" class="menu-link">
-                        <div data-i18n="Select &amp; Tags">Select &amp; Tags</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="forms-sliders.html" class="menu-link">
-                        <div data-i18n="Sliders">Sliders</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="forms-switches.html" class="menu-link">
-                        <div data-i18n="Switches">Switches</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="forms-extras.html" class="menu-link">
-                        <div data-i18n="Extras">Extras</div>
+                    <a href="{{ route('contacts.recycleBin') }}" class="menu-link">
+                        <div>Contacts</div>
                     </a>
                 </li>
             </ul>
         </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon icon-base ti tabler-layout-navbar"></i>
-                <div data-i18n="Form Layouts">Form Layouts</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="form-layouts-vertical.html" class="menu-link">
-                        <div data-i18n="Vertical Form">Vertical Form</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="form-layouts-horizontal.html" class="menu-link">
-                        <div data-i18n="Horizontal Form">Horizontal Form</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="form-layouts-sticky.html" class="menu-link">
-                        <div data-i18n="Sticky Actions">Sticky Actions</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon icon-base ti tabler-text-wrap-disabled"></i>
-                <div data-i18n="Form Wizard">Form Wizard</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="form-wizard-numbered.html" class="menu-link">
-                        <div data-i18n="Numbered">Numbered</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="form-wizard-icons.html" class="menu-link">
-                        <div data-i18n="Icons">Icons</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="form-validation.html" class="menu-link">
-                <i class="menu-icon icon-base ti tabler-checkbox"></i>
-                <div data-i18n="Form Validation">Form Validation</div>
-            </a>
-        </li> --}}
-        <!-- Tables -->
-        {{-- <li class="menu-item">
-            <a href="tables-basic.html" class="menu-link">
-                <i class="menu-icon icon-base ti tabler-table"></i>
-                <div data-i18n="Tables">Tables</div>
-            </a>
-        </li> --}}
     </ul>
 </aside>
 
