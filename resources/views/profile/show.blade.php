@@ -1,3 +1,22 @@
+@php
+    use Laravel\Jetstream\Agent;
+
+    $sessions = DB::table('sessions')
+        ->where('user_id', auth()->user()->getAuthIdentifier())
+        ->orderBy('last_activity', 'desc')
+        ->get()
+        ->map(function ($session) {
+            $agent = new Agent();
+            $agent->setUserAgent($session->user_agent);
+
+            return (object) [
+                'agent' => $agent, // now you can call browser() and platform()
+                'ip_address' => $session->ip_address,
+                'is_current_device' => $session->id === session()->getId(),
+                'last_active' => \Carbon\Carbon::createFromTimestamp($session->last_activity)->diffForHumans(),
+            ];
+        });
+@endphp
 @extends('backend.layouts.app')
 @section('title', 'Account Setting')
 @section('content')
@@ -31,8 +50,7 @@
                         <div class="tab-pane fade show active" id="navs-justified-profile" role="tabpanel">
                             <div class="card mb-6">
                                 <!-- Account -->
-                                <form method="post"
-                                    action="{{ route('user-profile-information.update') }}"
+                                <form method="post" action="{{ route('user-profile-information.update') }}"
                                     class="fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -158,10 +176,12 @@
 
                                             <div
                                                 class="mb-6 col-md-6 form-password-toggle form-control-validation fv-plugins-icon-container">
-                                                <label class="form-label" for="confirmPassword">Confirm New Password</label>
+                                                <label class="form-label" for="confirmPassword">Confirm New
+                                                    Password</label>
                                                 <div class="input-group input-group-merge has-validation">
-                                                    <input class="form-control" type="password" name="password_confirmation"
-                                                        id="confirmPassword" placeholder="************">
+                                                    <input class="form-control" type="password"
+                                                        name="password_confirmation" id="confirmPassword"
+                                                        placeholder="************">
                                                     <span class="input-group-text cursor-pointer"><i
                                                             class="icon-base ti tabler-eye-off icon-xs"></i></span>
                                                 </div>
@@ -186,7 +206,7 @@
                             <!--/ Change Password -->
 
                             <!-- Two-steps verification -->
-                            <div class="card mb-6">
+                            {{-- <div class="card mb-6">
                                 <div class="card-body">
                                     <h5 class="mb-6">Two-steps verification</h5>
                                     <h5 class="mb-4 text-body">Two factor authentication is not enabled yet.</h5>
@@ -198,10 +218,11 @@
                                     <button class="btn btn-primary mt-2 waves-effect waves-light" data-bs-toggle="modal"
                                         data-bs-target="#enableOTP">Enable Two-Factor Authentication</button>
                                 </div>
-                            </div>
+                            </div> --}}
+
                             <!-- Modal -->
                             <!-- Enable OTP Modal -->
-                            <div class="modal fade" id="enableOTP" tabindex="-1" aria-hidden="true">
+                            {{-- <div class="modal fade" id="enableOTP" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-simple modal-enable-otp modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-body">
@@ -240,6 +261,45 @@
                                             </form>
                                         </div>
                                     </div>
+                                </div>
+                            </div> --}}
+
+                            <div class="card mb-6">
+                                <h5 class="card-header">Recent Devices</h5>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-truncate">Browser</th>
+                                                <th class="text-truncate">Device</th>
+                                                <th class="text-truncate">Recent Activities</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($sessions as $session)
+                                                <tr>
+                                                    <td class="text-truncate text-heading fw-medium">
+                                                        @if ($session->agent->isDesktop())
+                                                            <i
+                                                                class="icon-base ti tabler-device-laptop icon-md align-top text-info me-2"></i>
+                                                        @else
+                                                            <i
+                                                                class="icon-base ti tabler-device-mobile icon-md align-top text-info me-2"></i>
+                                                        @endif
+
+                                                        {{ $session->agent->browser() }} on
+                                                        {{ $session->agent->platform() }}
+                                                    </td>
+
+                                                    <td class="text-truncate">
+                                                        {{ $session->is_current_device ? 'This device' : $session->ip_address }}
+                                                    </td>
+
+                                                    <td class="text-truncate">{{ $session->last_active }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
