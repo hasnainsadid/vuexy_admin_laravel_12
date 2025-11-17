@@ -29,8 +29,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->updateProfilePhoto($input['photo']);
         }
 
-        if ($input['email'] !== $user->email &&
-            $user instanceof MustVerifyEmail) {
+        if (
+            $input['email'] !== $user->email &&
+            $user instanceof MustVerifyEmail
+        ) {
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
@@ -58,4 +60,16 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 
         $user->sendEmailVerificationNotification();
     }
+
+    // protected function sendEmailVerificationMail(): void
+    // {
+    //     if (auth()->user()->hasVerifiedEmail()) {
+    //         notify()->info('Your email is already verified.');
+    //         return back();
+    //     }
+
+    //     auth()->user()->sendEmailVerificationNotification();
+    //     notify()->success('A new verification link has been sent to your email address.');
+    //     return back();
+    // }
 }

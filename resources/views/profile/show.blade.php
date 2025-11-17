@@ -57,7 +57,9 @@
                                     @method('PUT')
                                     <div class="card-body">
                                         <div class="d-flex align-items-start align-items-sm-center gap-6">
-                                            <img src="{{ Storage::url(auth()->user()->profile_photo_path) }}"
+                                            <img src="{{ auth()->user()->profile_photo_path
+                                                ? Storage::url(auth()->user()->profile_photo_path)
+                                                : Storage::url('default.jpg') }}"
                                                 alt="user-avatar" class="d-block w-px-100 h-px-100 rounded"
                                                 id="uploadedAvatar">
                                             <div class="button-wrapper">
@@ -68,7 +70,8 @@
                                                     <i class="icon-base ti tabler-upload d-block d-sm-none"></i>
                                                     <input type="file" id="upload" name="photo"
                                                         class="account-file-input" hidden=""
-                                                        accept="image/png, image/jpeg">
+                                                        accept="image/png, image/jpeg"
+                                                        onchange="if(this.files[0]){var reader=new FileReader();reader.onload=function(e){document.getElementById('uploadedAvatar').src=e.target.result;};reader.readAsDataURL(this.files[0]);}">
                                                 </label>
                                                 <div>Allowed JPG, GIF or PNG. Max size of 2Mb</div>
                                             </div>
@@ -111,6 +114,23 @@
                                 </form>
                             </div>
                             <!-- /Account -->
+                            @if (!auth()->user()->hasVerifiedEmail())
+                                <div class="card mb-6">
+                                    <h5 class="card-header">Email Verification</h5>
+                                    <div class="card-body">
+                                        <form id="formAccountDeactivation" action="{{ route('verification.send') }}"
+                                            method="POST" class="fv-plugins-bootstrap5 fv-plugins-framework"
+                                            novalidate="novalidate">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit"
+                                                class="btn btn-danger deactivate-account waves-effect waves-light">Send
+                                                Verification
+                                                Email</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="card">
                                 <h5 class="card-header">Delete Account</h5>
                                 <div class="card-body">
@@ -278,6 +298,8 @@
                                         <tbody>
                                             @foreach ($sessions as $session)
                                                 <tr>
+
+
                                                     <td class="text-truncate text-heading fw-medium">
                                                         @if ($session->agent->isDesktop())
                                                             <i
