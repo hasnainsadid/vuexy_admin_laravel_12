@@ -49,7 +49,7 @@
         <!-- Forms -->
          <li class="menu-item">
             <a href="{{ route('contacts.index') }}" class="menu-link">
-                {{-- <i class="menu-icon icon-base ti tabler-toggle-left"></i> --}}
+                <i class="menu-icon icon-base ti tabler-message"></i>
                 <div>Contact Us</div>
             </a>
         </li>
